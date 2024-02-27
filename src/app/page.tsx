@@ -1,3 +1,4 @@
+
 import Landing from "@/components/Landing";
 import Image from "next/image";
 

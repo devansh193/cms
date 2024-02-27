@@ -39,7 +39,7 @@ const Landing = () => {
             size={"lg"}
             asChild
           >
-            <Link href="/courses">
+            <Link href="/mycourses">
               <p className="text-white">Explore courses</p>
             </Link>
           </Button>
