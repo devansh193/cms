@@ -24,7 +24,7 @@ const purchases=[{
     Description:"This is a complete AI course"
 }]
 
-const mycourses = () =>{
+const MyCourse = () =>{
     if(!purchases.length) 
     return(
         <main className="flex items-center justify-center flex-col">
@@ -37,4 +37,4 @@ const mycourses = () =>{
         <Courses courses={purchases}/>
     );
 }
-export default mycourses;
+export default MyCourse;

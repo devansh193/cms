@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 
-const Logo = async () => {
-    
+const Logo = () => {
+  const session = useSession();
     return (
       <Link href={"/"}>
         <div className="hover:opacity-90 transition flex items-center gap-x-2">
@@ -14,7 +15,11 @@ const Logo = async () => {
             height={30}
             width={30}
           />
-          <p className="text-gray-900 font-semibold">100xdevs</p>
+          {session?.data?.user? (<p className="text-gray-900 font-semibold">
+            {session.data.user?.name}</p>
+            ) : (
+            <p className="text-gray-900 font-semibold">100xdevs</p>
+            )}
         </div>
       </Link>
     );
