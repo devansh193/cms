@@ -13,9 +13,8 @@ export const CourseCard = ({course}:{course: Courses;}) =>{
                         <div className="mt-2 mb-2"><h1 className="text-xl font-bold">{course.Title}</h1></div>
                 </div>
                 <p className="text-center font-semibold">{course.Description}</p>
-                <Button variant="outline" className="rounded-full mt-2 border border-blue-700">View Content</Button>
+                <Button variant="outline" className="rounded-full mt-2 border border-gray-900">View Content</Button>
             </div>
-            
         </div>
     )
 }

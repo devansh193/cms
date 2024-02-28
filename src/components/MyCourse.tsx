@@ -22,6 +22,10 @@ const purchases=[{
     courseId:5,
     Title:"AI",
     Description:"This is a complete AI course"
+},{
+    courseId:6,
+    Title:"AI",
+    Description:"This is a complete AI course"
 }]
 
 const MyCourse = () =>{

@@ -2,7 +2,7 @@
 
 import { auth } from "@/auth";
 import Landing from "@/components/Landing";
-import MyCourse from "@/components/mycourse";
+import MyCourse from "@/components/MyCourse";
 const getUserDetails = async () =>{
   const session = await auth();
   return session;
