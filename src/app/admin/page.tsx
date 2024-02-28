@@ -22,17 +22,17 @@ export default function Courses() {
          <Input type="text"
        className="text-black"
        placeholder="Course description"
-       onChange={(e)=>setTitle(e.target.value)}
+       onChange={(e)=>setDescription(e.target.value)}
        /> 
          <Input type="text"
        className="text-black"
        placeholder="Id"
-       onChange={(e)=>setTitle(e.target.value)}
+       onChange={(e)=>setId(e.target.value)}
        /> 
          <Input type="text"
        className="text-black"
        placeholder="Image-link"
-       onChange={(e)=>setTitle(e.target.value)}
+       onChange={(e)=>setImage(e.target.value)}
        /> 
       </div>
       <Button variant="outline" className="text-xl font-semibold border border-gray-950 rounded-full hover:bg-zinc-100 active:border-gray-950">Create</Button>
