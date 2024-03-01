@@ -13,7 +13,7 @@ export default function Courses() {
     <main className="flex items-center justify-center flex-col">
       <div className="pt-40 pb-20 mx-auto text-4xl font-bold text-center flex flex-col items-center max-w-3xl m-15">
         Admin Dashboard
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 py-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 py-10 ">
        <Input type="text"
        className="text-black"
        placeholder="Course Name"
@@ -35,7 +35,7 @@ export default function Courses() {
        onChange={(e)=>setImage(e.target.value)}
        /> 
       </div>
-      <Button variant="outline" className="text-xl font-semibold border border-gray-950 rounded-full hover:bg-zinc-100 active:border-gray-950">Create</Button>
+      <Button variant="default" className="text-sm font-semibold   hover:bg-blue-500 active:border-gray-950">Create</Button>
       </div>
     </main>
   );
