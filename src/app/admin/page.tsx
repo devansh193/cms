@@ -2,41 +2,37 @@
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button";
+import Courses from "@/components/Courses";
+import Link from "next/link";
 
 
-export default function Courses() {
-    const [title, setTitle]= useState("");
-    const [description, setDescription] = useState("");
-    const [id, setId]=useState("");
-    const [image, setImage]= useState("");
+
+export default function CoursesAdmin () {
+  const admin = true;
+  if(!admin){
+    return (
+      <main className="flex items-center justify-center flex-col">
+            <div className="py-40">
+                   <h1 className="text-2xl font-semibold"> Youre not authorized to access this page.</h1>
+                   
+            </div>
+        </main>
+    );
+  }
   return (
     <main className="flex items-center justify-center flex-col">
-      <div className="pt-40 pb-20 mx-auto text-4xl font-bold text-center flex flex-col items-center max-w-3xl m-15">
-        Admin Dashboard
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 py-10 ">
-       <Input type="text"
-       className="text-black"
-       placeholder="Course Name"
-       onChange={(e)=>setTitle(e.target.value)}
-       /> 
-         <Input type="text"
-       className="text-black"
-       placeholder="Course description"
-       onChange={(e)=>setDescription(e.target.value)}
-       /> 
-         <Input type="text"
-       className="text-black"
-       placeholder="Id"
-       onChange={(e)=>setId(e.target.value)}
-       /> 
-         <Input type="text"
-       className="text-black"
-       placeholder="Image-link"
-       onChange={(e)=>setImage(e.target.value)}
-       /> 
-      </div>
-      <Button variant="default" className="text-sm font-semibold   hover:bg-blue-500 active:border-gray-950">Create</Button>
-      </div>
-    </main>
+            <div className="py-20">
+                   <h1 className="text-4xl font-semibold my-5"> Welcome to admin dashboard.</h1>
+            </div>
+            <div className="flex flex-row justify-between gap-10">
+              <Link href="/admin/PublishedCourse">
+              <Button variant="secondary">View published courses</Button>
+              </Link>
+              <Link href="/admin/CreateCourse">
+              <Button className="hover:bg-blue-500">Create Courses</Button>
+              </Link>
+            </div>
+        </main>
+    
   );
 }

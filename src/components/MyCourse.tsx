@@ -1,7 +1,7 @@
 import Courses from "@/components/Courses";
 
 
-const purchases=[{
+const purchased=[{
     courseId:1,
     Title: "Full-stack",
     Description:"This is a full stack web development course"
@@ -29,7 +29,7 @@ const purchases=[{
 }]
 
 const MyCourse = () =>{
-    if(!purchases.length) 
+    if(!purchased.length) 
     return(
         <main className="flex items-center justify-center flex-col">
             <div className="py-40">
@@ -38,7 +38,7 @@ const MyCourse = () =>{
         </main>
     );
     return(
-        <Courses courses={purchases}/>
+        <Courses courses={purchased}/>
     );
 }
 export default MyCourse;
