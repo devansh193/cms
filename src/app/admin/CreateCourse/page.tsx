@@ -4,10 +4,11 @@ import { Input } from '@/components/ui/input'
 import React, { useState } from 'react'
 
 export default function CreateCourse  ()  {
-    const [title, setTitle]= useState("");
-    const [description, setDescription] = useState("");
-    const [id, setId]=useState("");
-    const [image, setImage]= useState("");
+    const [title, setTitle]= useState('');
+    const [description, setDescription] = useState('');
+    const [id, setId]=useState('');
+    const [adminSecret, setAdminSecret]=useState('');
+    const [imageUrl, setImage]= useState('');
   return (
     <main className="flex items-center justify-center flex-col">
       <div className="pt-40 pb-20 mx-auto text-4xl font-bold text-center flex flex-col items-center max-w-3xl m-15">
@@ -23,6 +24,12 @@ export default function CreateCourse  ()  {
        placeholder="Description"
        onChange={(e)=>setDescription(e.target.value)}
        /> 
+        <Input
+        className="text-black"
+        type="text"
+        placeholder="adminSecret"
+        onChange={(e) => setAdminSecret(e.target.value)}
+      />
          <Input type="text"
        className="text-black"
        placeholder="Id"
@@ -34,7 +41,24 @@ export default function CreateCourse  ()  {
        onChange={(e)=>setImage(e.target.value)}
        /> 
       </div>
-      <Button variant="default" className="text-sm font-semibold   hover:bg-blue-500 active:border-gray-950">Create</Button>
+      <Button variant="default" className="text-sm font-semibold   hover:bg-blue-500 active:border-gray-950"
+      onClick={async()=>{
+        await fetch('/api/courses',{
+          body: JSON.stringify({
+            id,
+            title,
+            description,
+            imageUrl
+          }),
+          method:'POST',
+          headers:{
+            'Content-Type': 'application/json',
+          },
+        });
+      }}
+      >
+        Create
+      </Button>
       </div>
     </main>
   )

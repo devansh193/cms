@@ -1,18 +1,22 @@
 import { db } from "@/lib/db";
-import { error } from "console";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(
-    req: Request,
-    ) {
-        const course = await db.course.create({
-            data:{
-                id,
-                title,
-                description,
-                imageUrl
-
-            }
-        });
-        return NextResponse.json(course);
-    } 
+export async function POST(req:Request) {
+    const {
+        
+        title,
+        description,
+        imageUrl,
+        
+    } = await req.json();
+  
+    await db.course.create({
+        data:{
+            title,
+            imageUrl,
+            description,
+            
+        },
+    });
+    return NextResponse.json({},{status: 200,},);
+}
