@@ -14,8 +14,7 @@ export async function POST(req:Request) {
         data:{
             title,
             imageUrl,
-            description,
-            
+            description,  
         },
     });
     return NextResponse.json({},{status: 200,},);

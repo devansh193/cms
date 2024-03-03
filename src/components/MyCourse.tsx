@@ -28,6 +28,8 @@ const purchased=[{
     Description:"This is a complete AI course"
 }]
 
+
+
 const MyCourse = () =>{
     if(!purchased.length) 
     return(
