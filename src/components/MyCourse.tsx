@@ -23,7 +23,7 @@ const purchased=[{
     Title:"AI",
     Description:"This is a complete AI course"
 },{
-    courseId:6,
+    courseId:7,
     Title:"AI",
     Description:"This is a complete AI course"
 }]
