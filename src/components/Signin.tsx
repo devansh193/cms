@@ -24,7 +24,7 @@ import {
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { constrainedMemory } from "process";
+import { signIn } from "next-auth/react";
 
 const FormSchema = z
   .object({
@@ -41,7 +41,7 @@ const FormSchema = z
     message: "Password do not match",
   });
 
-const SignUp = () => {
+const Signin = () => {
   const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
   function toggle(){
@@ -50,31 +50,17 @@ const SignUp = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: "",
       email: "",
       password: "",
-      confirmPassword: "",
     },
   });
 
   const onSubmit = async (values: z.infer<typeof FormSchema>) => {
-    const response = await fetch("http://localhost:3000/api/user",{
-      method:'POST',
-      headers:{
-        'Content-type':'application/json'
-      },
-      body: JSON.stringify({
-        username: values.username,
+    const signInData = await signIn('credentials',{
         email: values.email,
-        password: values.password
-      })
-    })
-    if(response.ok){
-      console.log('user created');
-        router.push('/signin')
-    }else{
-      console.error('Registration failed')
-    }
+        password: values.password,
+    });
+    console.log(signInData)
   };
 
   return (
@@ -85,25 +71,13 @@ const SignUp = () => {
            
           <Card className="w-[350px]">
             <CardHeader>
-              <CardTitle>Create your account</CardTitle>
+              <CardTitle>Login to your account</CardTitle>
             </CardHeader>
             <CardContent>
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
                   <div className="space-y-2">
-                    <FormField
-                      control={form.control}
-                      name="username"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Username</FormLabel>
-                          <FormControl>
-                            <Input placeholder="devansh" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                    
                     <FormField
                       control={form.control}
                       name="email"
@@ -145,26 +119,9 @@ const SignUp = () => {
                         </FormItem>
                       )}
                     />
-                    <FormField
-                      control={form.control}
-                      name="confirmPassword"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Re-Enter your password</FormLabel>
-                          <FormControl>
-                            <Input
-                              placeholder="Re-Enter your password"
-                              type="password"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
                   </div>
                   <Button className="w-full mt-6" type="submit">
-                    Create account
+                    <h1 className="text-md font-semibold" >Login</h1>
                   </Button>
                 </form>
               </Form>
@@ -176,4 +133,8 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Signin;
+
+
+
+
